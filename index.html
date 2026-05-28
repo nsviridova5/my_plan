@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Task Manager MVP</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar" aria-label="Основная навигация">
+      <nav class="sidebar__nav">
+        <button class="sidebar__link is-active" type="button" data-section="сегодня">сегодня</button>
+        <button class="sidebar__link" type="button" data-section="все задачи">все задачи</button>
+        <button class="sidebar__link" type="button" data-section="без срока">без срока</button>
+
+        <h2 class="sidebar__heading">проекты</h2>
+        <button class="sidebar__add-project" type="button" id="add-project-button">+ добавить проект</button>
+        <div class="project-list" id="project-list"></div>
+
+        <button class="sidebar__link" type="button" data-section="архив">архив</button>
+        <button class="sidebar__link" type="button" data-section="входящие">входящие</button>
+        <button class="sidebar__link" type="button" data-section="настройки">настройки</button>
+      </nav>
+    </aside>
+
+    <main class="content">
+      <div class="content__header">
+        <h1 class="content__title" id="section-title">сегодня</h1>
+        <input class="content__search" id="task-search" type="text" placeholder="поиск..." autocomplete="off">
+      </div>
+      <form class="quick-task-form" id="quick-task-form">
+        <input class="quick-task-form__input" id="quick-task-title" type="text" placeholder="введите задачу..." autocomplete="off">
+
+        <button class="quick-task-form__submit" type="submit">добавить</button>
+
+        <details class="quick-task-form__details">
+          <summary>параметры</summary>
+
+          <div class="quick-task-form__options">
+            <input class="quick-task-form__control" id="quick-task-deadline" type="datetime-local" aria-label="дедлайн">
+
+            <select class="quick-task-form__control" id="quick-task-priority" aria-label="приоритет">
+              <option value="low">низкий</option>
+              <option value="medium" selected>средний</option>
+              <option value="high">высокий</option>
+            </select>
+
+            <select class="quick-task-form__control" id="quick-task-recurrence" aria-label="регулярность">
+              <option value="none" selected>без повтора</option>
+              <option value="day">каждый день</option>
+              <option value="week">каждую неделю</option>
+              <option value="month">каждый месяц</option>
+            </select>
+
+            <select class="quick-task-form__control" id="quick-task-project" aria-label="проект">
+              <option value="">проект</option>
+            </select>
+          </div>
+        </details>
+      </form>
+      <section class="content__body" id="section-content" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
